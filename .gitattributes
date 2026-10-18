@@ -1,0 +1,4 @@
+# Keep downloaded source bytes identical on Windows and Linux for SHA-256 provenance.
+data/flood.csv -text
+*.pdf binary
+*.png binary
