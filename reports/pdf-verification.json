@@ -1,7 +1,7 @@
 {
-  "pages": 6,
-  "image_count": 4,
-  "embedded_traditional_chinese_font": true,
-  "has_student_id": true,
-  "has_notebooklm_pending_section": true
+  "pages": 7,
+  "notebooklm_summary_present": true,
+  "summary_characters": 423,
+  "gpt_attachment_pending": true,
+  "embedded_traditional_chinese_font": true
 }

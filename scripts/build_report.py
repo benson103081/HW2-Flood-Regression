@@ -11,6 +11,7 @@ ROOT=Path(__file__).resolve().parents[1]
 
 def main():
     d=json.loads((ROOT/'reports/results.json').read_text(encoding='utf8'))
+    notebook=json.loads((ROOT/'reports/notebooklm_summary.json').read_text(encoding='utf8'))
     font=Path(os.environ.get('HW2_CJK_FONT','C:/Windows/Fonts/msjh.ttc'))
     if not font.exists():
         raise RuntimeError('Set HW2_CJK_FONT to a Traditional Chinese TrueType font (.ttf/.ttc) to generate the PDF.')
@@ -34,7 +35,7 @@ def main():
     def num(x): return f'{x:.6g}'
     para('HW2 多元線性迴歸：洪水機率資料的確定性規則與特徵選擇',True)
     para('學號：7114056126｜GitHub：benson103081｜分析日期：2026-10-18')
-    para('版本狀態：分析、程式、圖表與網站已製作；NotebookLM 實際研究摘要及完整 GPT 對話 PDF 尚待使用者補上。此報告不是已齊備所有必交附件的最終版本。')
+    para('版本狀態：分析、程式、圖表、網站及使用者提供的 NotebookLM 研究摘要已整合；完整 GPT 對話 PDF 尚待補上。此報告不是已齊備所有必交附件的最終版本。')
     para('摘要',True)
     para('本研究使用 Kaggle Flood Prediction Dataset 版本 1 的 50,000 筆資料與 20 個數值特徵，依 CRISP-DM 建立可重現的多元線性迴歸流程。資料以固定亂數種子切為 40,000 筆訓練與 10,000 筆測試，前處理和特徵選擇均在交叉驗證訓練折內完成。完整 OLS 的測試 R² 為 1；事後以十進位精確運算核對發現，全部目標都等於 20 個輸入分數加總除以 200。研究價值在於揭露資料的確定性規則、解釋刪除特徵的誤差，以及避免將完美擬合誤認為真實災害預測能力。')
     para('1. Business Understanding｜商業理解',True)
@@ -75,15 +76,19 @@ def main():
     para('7. GPT 輔助內容',True)
     para('本作業由使用者提出需求並提供學號與繳交規格，GPT/Codex 協助閱讀題目、查詢來源、撰寫程式、設計分析流程、製作網站、查核數值及整理報告。全部模型分數由實際下載資料執行產生，未將範例成績抄入報告。使用者需審閱結論並理解程式；AI 協助不取代資料來源可信度或個人責任。')
     para('待附：完整 GPT 對話 PDF。必須由使用者從聊天介面匯出此次作業的所有對話；不能以本節摘要冒充完整對話紀錄。')
-    para('8. NotebookLM 研究摘要（待使用者完成）',True)
-    para('此環境沒有可用的 NotebookLM 連線，因此尚未執行 NotebookLM 研究，也未撰寫冒充其輸出的摘要。請依「需要你完成的事項.txt」加入來源、執行提問，將實際回覆及來源資訊保存；再完成至少 100 字繁體中文摘要放入本節，明確標示 NotebookLM 摘要。')
+    para('8. NotebookLM 研究摘要',True)
+    para(notebook['provenance'])
+    para('NotebookLM 摘要（依使用者提供內容校訂，超過 100 字）：')
+    para(notebook['summary'])
+    para('內容校訂與證據界線',True)
+    for correction in notebook['corrections']: para(correction)
     para('9. 參考來源',True)
     sources=[('Kaggle 資料來源','https://www.kaggle.com/datasets/naiyakhalid/flood-prediction-dataset'),('scikit-learn：Linear Models','https://scikit-learn.org/stable/modules/linear_model.html'),('scikit-learn：Feature selection','https://scikit-learn.org/stable/modules/feature_selection.html'),('scikit-learn：Common pitfalls / leakage','https://scikit-learn.org/stable/common_pitfalls.html'),('scikit-learn：Histogram-based gradient boosting','https://scikit-learn.org/stable/modules/ensemble.html#histogram-based-gradient-boosting'),('statsmodels：Regression diagnostics','https://www.statsmodels.org/stable/diagnostic.html')]
     for title,url in sources:para(title+'：'+url)
     para('來源查閱日期：2026-10-18。方法介紹採官方文件；資料生成規則為本次實測發現，未宣稱由 Kaggle 作者確認。')
     out=ROOT/'reports/7114056126_hw2_report.pdf'
     def footer(canvas,doc):
-        canvas.setFont('MSung-Light',8);canvas.drawString(48,27,'7114056126 | HW2 | NotebookLM / GPT 附件待補');canvas.drawRightString(545,27,str(doc.page))
+        canvas.setFont('MSung-Light',8);canvas.drawString(48,27,'7114056126 | HW2 | 完整 GPT 對話附件待補');canvas.drawRightString(545,27,str(doc.page))
     SimpleDocTemplate(str(out),pagesize=(595,842),rightMargin=48,leftMargin=48,topMargin=40,bottomMargin=48).build(story,onFirstPage=footer,onLaterPages=footer)
     (ROOT/'reports/report.html').write_text('<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><title>HW2 分析報告</title><style>body{font:16px/1.8 sans-serif;max-width:1000px;margin:40px auto;padding:24px;color:#173f36}h2{margin-top:35px}img{max-width:100%}table{border-collapse:collapse;width:100%}td{border:1px solid #ccd7ce;padding:8px;font-size:13px}p{overflow-wrap:anywhere}@media print{body{margin:0;font-size:11pt}h2{break-after:avoid}img,table{break-inside:avoid}}</style>'+''.join(web)+'</html>',encoding='utf8')
     shutil.copy2(out,ROOT/'site/downloads'/out.name)
@@ -91,6 +96,7 @@ def main():
     shutil.copy2(ROOT/'reports/test_predictions.csv',ROOT/'site/downloads/test_predictions.csv')
     # Keep the site wording consistent with the observed deterministic target.
     p=ROOT/'site/index.html';s=p.read_text(encoding='utf8')
+    s=s.replace('報告已標示尚待補上的 NotebookLM 研究與完整 GPT 對話附件。','NotebookLM 研究摘要已整合；完整 GPT 對話 PDF 附件仍待補。')
     for a,b in [('完整 OLS 的 95% 預測區間','預測不確定性'),('僅在選擇 OLS 時顯示。這是新觀測值的區間，依賴線性、常態與等變異等假設；並非實際災害機率的校準保證。','全部目標符合輸入分數總和除以 200。殘差僅為浮點誤差，無法合理估計真實預測區間，因此不顯示虛假的精密區間。'),('以及 OLS 預測區間覆蓋率','；殘差退化時停用推論與區間'),('測試集預測與區間 CSV','測試集預測 CSV'),('大樣本中的小偏離可能達統計顯著；p 值不能單獨證明模型可用。','本資料殘差退化，故不解讀 RESET、常態與等變異檢定 p 值。')]: s=s.replace(a,b)
     p.write_text(s,encoding='utf8')
     p=ROOT/'site/app.js';s=p.read_text(encoding='utf8').replace("'請切換至 OLS'","'殘差退化，不提供區間'").replace("'?????????'","'不適用（殘差退化）'").replace('特徵選擇實驗顯示，保留完整 20 欄的誤差最低；精簡欄位在這份資料中犧牲了預測資訊。','全部 50,000 筆目標皆等於 20 個輸入分數總和 ÷ 200，因此 R² = 1 反映確定性公式，並非真實洪水預測能力。精簡特徵會丟失公式所需資訊。')
