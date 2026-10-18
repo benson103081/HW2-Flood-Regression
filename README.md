@@ -10,12 +10,12 @@
 
 - 分析、Python 主程式、PDF 報告、互動網站與數值／瀏覽器驗證：完成。
 - NotebookLM：使用者已貼回研究內容，已核對數值並整合超過 100 字的摘要；來源與校訂紀錄見 `reports/notebooklm_summary.json`。
-- **尚待使用者提供：完整 GPT 對話 PDF。** 報告目前明確保留此附件待補說明。
+- GPT 對話：已取得使用者原始匯出並轉為 72 頁 PDF，附於本機繳交 ZIP 的 `attachments/`，不公開對話內容。
 - 正式要求是一個以學號命名的 ZIP，GitHub／網站網址為補充，不能取代必要附件。
 - Repo：<https://github.com/benson103081/HW2-Flood-Regression>
 - 已部署網站：<https://benson103081.github.io/HW2-Flood-Regression/>
 
-請看 [需要你完成的事項.txt](需要你完成的事項.txt)。目前 ZIP 是待補附件版本，不應直接當作最終作業繳交。
+請看 [需要你完成的事項.txt](需要你完成的事項.txt)。本機 `submission/7114056126_hw2.zip` 已包含必要文件與對話附件，可於使用者最終審閱後繳交。
 
 ## 快速重現
 
@@ -113,11 +113,11 @@ scripts/                   下載、驗證、報告、打包與部署
 submission/                本機 ZIP，不提交 repo
 ```
 
-## AI 輔助與待補附件
+## AI 輔助與對話附件
 
 GPT/Codex 協助需求理解、資料查詢、程式、分析流程、驗證、網站與文件。數值由真實執行產生。完整對話需由使用者從聊天介面匯出，不能以摘要替代。NotebookLM 摘要取自使用者在本次對話提供的研究內容，經實測數值校訂後納入報告；未直接連線 NotebookLM，亦未取得其筆記本網址或原始引用編號，不宣稱獨立驗證操作紀錄。
 
-完整 GPT 對話 PDF 請放在本機 `attachments/`；此目錄不提交 GitHub，避免把全部對話公開。最終 ZIP 會納入該目錄。NotebookLM 摘要已整合；完整 GPT 對話提供後再完成最終繳交包。
+使用者實際匯出的 Markdown 與轉換後的 GPT 對話 PDF 已放在本機 `attachments/`；此目錄不提交 GitHub，只加入繳交 ZIP。紀錄涵蓋最初作業需求至匯出操作說明，不包含之後的附件轉檔與打包對話。原匯出中的工具輸出截斷或未內嵌圖片保留原樣，不補造內容。`transcript-verification.json` 保存原檔及 PDF 雜湊、頁數與驗證紀錄。公開 repo 不含私人對話附件，其他人僅 clone repo 不能產生具備私人附件的最終 ZIP；分析程式與網站仍可獨立重現。
 
 ## 方法來源
 
@@ -133,4 +133,4 @@ GPT/Codex 協助需求理解、資料查詢、程式、分析流程、驗證、�
 
 首次公開網站、結果 JSON、PDF 皆實際讀取 HTTP 200，並確認當時 JSON／PDF 與本機檔案雜湊一致。已在公開網站以 Chrome 實測：預設 50.00%，將季風強度由 5 改為 7 後顯示 51.00%，無 JavaScript 例外。驗證紀錄在 `reports/public-verification.json`。PDF 內嵌繁體中文字型，已檢視渲染及可搜尋文字。
 
-本次更新加入使用者提供的 NotebookLM 研究摘要並重新產生報告及 ZIP；只剩完整 GPT 對話附件待補。網站發布成功不代表繳交附件已齊備。
+本次更新已整合 NotebookLM 摘要、取得對話匯出附件並重新產生正式報告及本機 ZIP。ZIP 的 `SUBMISSION_STATUS.json` 為 `READY_FOR_SUBMISSION`，必要附件無待補項目；最後由使用者審閱並上傳課程平台。

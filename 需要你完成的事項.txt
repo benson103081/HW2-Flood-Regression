@@ -1,32 +1,20 @@
-HW2 待你完成的事項｜7114056126
+﻿HW2 最終繳交說明｜7114056126
 
-一、NotebookLM 研究（已提供並整合；下列操作留存供追溯，不需重做）
-1. 用自己的 Google 帳號開啟 https://notebooklm.google.com/ ，新增筆記本「HW2 洪水機率多元線性迴歸」。
-2. 加入下列來源。若網站無法匯入，可下載該頁 PDF 後加入，並保留來源 URL；不必購買服務。
-   https://www.kaggle.com/datasets/naiyakhalid/flood-prediction-dataset
-   https://scikit-learn.org/stable/modules/linear_model.html
-   https://scikit-learn.org/stable/modules/feature_selection.html
-   https://scikit-learn.org/stable/common_pitfalls.html
-   https://scikit-learn.org/stable/modules/ensemble.html
-3. 將 reports/7114056126_hw2_report.pdf 加入筆記本，標示為「本次實測報告」，不要當作外部獨立研究。
-4. 貼入以下提問：
+必交內容已齊備：Python 主程式、CRISP-DM 分析報告、NotebookLM 摘要、72 頁 GPT 對話 PDF 及原始匯出 Markdown。
 
-請根據已加入的來源，用繁體中文研究這份 Kaggle 洪水機率迴歸題目的解法。比較 OLS、Ridge、Lasso、SelectKBest、RFE 與直方圖梯度提升，說明適用情境、特徵選擇與防止資料洩漏的方法。我的本次實測報告發現 50,000 筆資料的 FloodProbability 全部等於 20 個輸入分數加總除以 200；請明確把這點歸因於「本次實測報告」，不要假設是 Kaggle 作者說明。解釋為何此時 R²=1 不證明真實洪水預測能力、刪減特徵可能變差，以及殘差退化時不能合理解讀常態檢定和預測區間。請提出可能的改進與研究限制，為每個重要論點附上來源引用；最後給出至少 150 字的繁體中文研究摘要。
+你現在只需要：
+1. 打開報告與對話 PDF，最後審閱內容及學號。
+2. 上傳 submission/7114056126_hw2.zip 到課程作業平台。
+3. 若平台有網址欄位，再提供以下連結。
 
-5. 保留 NotebookLM 的實際回覆、來源引用和筆記本網址；可複製成文字或匯出 PDF。把結果交給我，我會整合成報告的「NotebookLM 摘要」並重新產生 PDF 與 ZIP。
-狀態：你已貼回研究內容，超過 100 字的校訂摘要已整合進報告。目前只剩完整 GPT 對話 PDF 待補；若有 NotebookLM 筆記本網址或含引用編號的原始匯出，可另外保存作佐證。
+GitHub repo：https://github.com/benson103081/HW2-Flood-Regression
+網站：https://benson103081.github.io/HW2-Flood-Regression/
 
-二、完整 GPT 對話 PDF（必做）
-1. 等本次作業最後修改完成後，匯出這次作業所有 ChatGPT/Codex 對話。
-2. 依題目可使用 pdfCrowd 或其他方式；若介面可列印，選「另存為 PDF」。
-3. 請確認中文、圖片與對話頭尾沒有被截掉，也沒有只匯出目前可見的幾則訊息。
-4. 存成 7114056126_hw2_GPT對話.pdf，放入本機 attachments/，再交給我檢查與打包。此資料夾不提交 GitHub，只加入最後繳交 ZIP。
-摘要、操作紀錄或 AI 自行重寫的對話，不等於完整對話 PDF。
+報告：reports/7114056126_hw2_report.pdf
+對話：attachments/7114056126_hw2_GPT對話.pdf
+原文：attachments/7114056126_hw2_對話.md
 
-三、最後審閱與上傳（必做）
-1. 看懂核心發現：本資料目標等於全部 20 個輸入分數總和除以 200；這是資料公式，不是實際洪水預警能力。
-2. 確認 NotebookLM 摘要已整合、完整 GPT PDF 已附，報告不再有「待補」標記。
-3. 最終上傳 7114056126_hw2.zip；GitHub repo 與公開網站網址作補充成果。
-4. 網站與 GitHub 的實際部署狀態見 README 和本次聊天最後回覆；不要把未驗證的預計網址當作已部署。
-
-目前沒有參加 Kaggle 競賽，因此不需要捏造或填寫 Kaggle 名次。
+不需要再重做 NotebookLM，也不需要另行部署網站。
+對話附件只加入本機 ZIP，不上傳公開 GitHub 或網站。
+紀錄截至匯出說明，後續僅轉檔及打包；原匯出中的工具截斷或未內嵌圖片保留原樣，不補造。
+核心發現：目標等於 20 個輸入分數總和除以 200；R²=1 是重建資料公式，不是真實洪水預警能力。

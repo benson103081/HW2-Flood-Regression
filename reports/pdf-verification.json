@@ -1,7 +1,7 @@
 {
   "pages": 7,
   "notebooklm_summary_present": true,
-  "summary_characters": 423,
-  "gpt_attachment_pending": true,
+  "gpt_attachment_pending": false,
+  "transcript_pages": 72,
   "embedded_traditional_chinese_font": true
 }
