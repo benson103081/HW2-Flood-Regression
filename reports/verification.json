@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "checks": [
+    "disjoint and exhaustive split",
+    "five fold coverage",
+    "dataset hash",
+    "no target in features",
+    "all linear export predictions",
+    "independent RMSE/MAE",
+    "degenerate inference suppression",
+    "50000 exact Decimal formula checks"
+  ],
+  "models_checked": 5,
+  "test_rows": 10000
+}

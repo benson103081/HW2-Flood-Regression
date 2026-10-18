@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checks": [
+    "initial load, 20 inputs, deterministic-target explanation, no misleading interval",
+    "prediction matches independent sum/200, blank validation, extrapolation, reset",
+    "all exported models and presets",
+    "local download links and PDF signature",
+    "390px and 320px layout without horizontal page overflow"
+  ],
+  "page_errors": []
+}
