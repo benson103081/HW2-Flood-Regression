@@ -35,8 +35,8 @@ if mode=='publish':
         run('git','init','-b','main');run('git','remote','add','origin',f'https://github.com/{OWNER}/{REPO}.git')
     assert run('git','remote','get-url','origin').stdout.strip()==f'https://github.com/{OWNER}/{REPO}.git'
     run('git','add','.gitignore','7114056126_hw2.py','README.md','requirements.txt','requirements-dev.txt','data','reports','scripts','site','.github','需要你完成的事項.txt')
-    status=run('git','status','--porcelain').stdout
-    if status.strip():run('git','commit','-m','Complete reproducible HW2 analysis, report and interactive site')
+    staged=run('git','diff','--cached','--name-only').stdout
+    if staged.strip():run('git','commit','-m','Complete reproducible HW2 analysis, report and interactive site')
     result=run('git','push','-u','origin','main');print('Pushed main successfully')
     try:pages=api(f'/repos/{OWNER}/{REPO}/pages')
     except RuntimeError as e:

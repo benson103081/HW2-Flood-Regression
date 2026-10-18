@@ -31,6 +31,8 @@ python -m venv .venv
 
 開啟 <http://localhost:8000>。不要直接以 file:// 開啟，網站需要 fetch JSON。單次分析會執行五折網格搜尋，時間依電腦而異；所有結果來自實際計算。原始資料已隨 repo 提供，重跑不需要 Kaggle 金鑰。
 
+PDF 產生器在 Windows 使用系統 Microsoft JhengHei 並嵌入字型。其他系統請以 `HW2_CJK_FONT` 環境變數指定支援繁體中文的 TrueType `.ttf`／`.ttc`；分析與現有 PDF 閱讀不需要此設定。
+
 若需重新取得原始資料，執行 `python scripts/download_data.py`。該程式固定下載版本 1，只接受單一 CSV，並產生 SHA-256 與來源中繼資料。
 
 瀏覽器驗證需要已安裝 Chrome：

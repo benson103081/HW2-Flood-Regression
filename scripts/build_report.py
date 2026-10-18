@@ -1,8 +1,8 @@
 """Create a UTF-8 HTML report, printable PDF and handoff documents from actual results."""
 from pathlib import Path
-import json, html, shutil
+import json, html, shutil, os
 from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.cidfonts import UnicodeCIDFont
+from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib import colors
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image, Table, TableStyle, PageBreak
@@ -11,7 +11,10 @@ ROOT=Path(__file__).resolve().parents[1]
 
 def main():
     d=json.loads((ROOT/'reports/results.json').read_text(encoding='utf8'))
-    pdfmetrics.registerFont(UnicodeCIDFont('MSung-Light'))
+    font=Path(os.environ.get('HW2_CJK_FONT','C:/Windows/Fonts/msjh.ttc'))
+    if not font.exists():
+        raise RuntimeError('Set HW2_CJK_FONT to a Traditional Chinese TrueType font (.ttf/.ttc) to generate the PDF.')
+    pdfmetrics.registerFont(TTFont('MSung-Light',str(font),subfontIndex=0))
     normal=ParagraphStyle('body',fontName='MSung-Light',fontSize=10,leading=17,wordWrap='CJK',spaceAfter=9)
     heading=ParagraphStyle('heading',parent=normal,fontSize=16,leading=23,textColor=colors.HexColor('#177f74'),spaceBefore=16)
     small=ParagraphStyle('small',parent=normal,fontSize=8,leading=12)
