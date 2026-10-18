@@ -12,7 +12,7 @@
 - **尚待使用者提供：NotebookLM 實際研究結果與 100 字以上摘要、完整 GPT 對話 PDF。** 報告目前明確保留待補說明。
 - 正式要求是一個以學號命名的 ZIP，GitHub／網站網址為補充，不能取代必要附件。
 - Repo：<https://github.com/benson103081/HW2-Flood-Regression>
-- 預計網站：<https://benson103081.github.io/HW2-Flood-Regression/>（是否已部署以本檔後續部署紀錄為準）
+- 已部署網站：<https://benson103081.github.io/HW2-Flood-Regression/>
 
 請看 [需要你完成的事項.txt](需要你完成的事項.txt)。目前 ZIP 是待補附件版本，不應直接當作最終作業繳交。
 
@@ -128,4 +128,8 @@ GPT/Codex 協助需求理解、資料查詢、程式、分析流程、驗證、�
 
 ## 部署紀錄
 
-待發布驗證後更新；目前請勿將預計網址當成已成功部署的證據。
+2026-10-18：GitHub Pages 已公開可用。[部署 run 39096069306](https://github.com/benson103081/HW2-Flood-Regression/actions/runs/39096069306) 已通過數值驗證並發布。早期兩次建置因 Git 自動轉換 CSV 換行造成來源雜湊不一致而停止；已用 `.gitattributes` 保留原始資料位元組，沒有放寬驗證門檻。
+
+公開網站、結果 JSON、PDF 皆實際讀取 HTTP 200，並確認 JSON／PDF 與本機最新檔案雜湊一致。已在公開網站以 Chrome 實測：預設 50.00%，將季風強度由 5 改為 7 後顯示 51.00%，無 JavaScript 例外。驗證紀錄在 `reports/public-verification.json`。PDF 六頁、內嵌繁體中文字型，已檢視渲染及可搜尋文字。
+
+最後的文件／驗證紀錄更新不改變已驗證網站產物。NotebookLM 與完整 GPT 對話附件仍待補，網站發布成功不代表繳交附件已齊備。

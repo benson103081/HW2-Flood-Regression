@@ -2,8 +2,8 @@ from pathlib import Path
 import json,zipfile
 ROOT=Path(__file__).resolve().parents[1]
 out=ROOT/'submission';out.mkdir(exist_ok=True)
-paths=[ROOT/n for n in ['7114056126_hw2.py','README.md','requirements.txt','requirements-dev.txt','需要你完成的事項.txt']]
-for folder in ['data','reports','site','scripts','attachments']:
+paths=[ROOT/n for n in ['7114056126_hw2.py','README.md','requirements.txt','requirements-dev.txt','需要你完成的事項.txt','.gitattributes','.gitignore']]
+for folder in ['data','reports','site','scripts','attachments','.github']:
     if (ROOT/folder).exists():
         paths.extend(p for p in (ROOT/folder).rglob('*') if p.is_file() and '__pycache__' not in p.parts and not p.name.endswith('.log'))
 manifest={'student_id':'7114056126','status':'DRAFT_PENDING_REQUIRED_ATTACHMENTS','pending':['NotebookLM actual research summary (100+ Chinese characters) integrated into report','Complete GPT conversation PDF'],'note':'Do not submit as final until pending requirements are completed.'}

@@ -1,0 +1,10 @@
+{
+  "url": "https://benson103081.github.io/HW2-Flood-Regression/",
+  "verified": true,
+  "checks": [
+    "HTTP 200 and current artifact: index",
+    "HTTP 200 and current artifact: assets/results.json",
+    "HTTP 200 and current artifact: downloads/7114056126_hw2_report.pdf",
+    "public Chrome prediction 50.00% -> 51.00%, no JS exceptions"
+  ]
+}
